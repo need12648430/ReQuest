@@ -1,0 +1,16 @@
+This code uses some snippets found around the web.
+
+Timezone offset made timestamp() possible:
+	http://lua-users.org/wiki/TimeZone
+
+Escaping and unescaping strings:
+	http://lua-users.org/wiki/StringRecipes
+
+Base64 module:
+	https://github.com/toastdriven/lua-base64
+
+Sha1 module:
+	https://github.com/kikito/sha1.lua
+
+I also took some notes from code found here:
+	https://github.com/lipp/lua-websockets

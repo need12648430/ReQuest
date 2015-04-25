@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>websockets</title>
+	</head>
+	<body>
+		<div>this is a basic echo server test</div>
+		<div id="response"></div>
+		<div>
+			<input type="text" id="message" /> (press enter to send)
+		</div>
+		<script type="text/javascript">
+			var response = document.getElementById("response");
+			var message = document.getElementById("message");
+			var uri = "ws://localhost:1337/websocket";
+			
+			window.onload = function() {
+				var websocket = new WebSocket(uri)
+				
+				websocket.onopen = function(e) {
+					console.log("opened");
+				};
+				websocket.onclose = function(e) {
+					console.log("closed");
+				};
+				websocket.onmessage = function(e) {
+					response.innerHTML = e.data;
+				};
+				websocket.onerror = function(e) {
+					alert(e.data);
+					console.error(e.data);
+				};
+				
+				message.onkeydown = function(e) {
+					if(e.keyCode == 13) {
+						e.preventDefault();
+						websocket.send(message.value);
+						message.value = "";
+					}
+				}
+			}
+		</script>
+	</body>
+</html>
